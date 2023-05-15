@@ -3,13 +3,14 @@ from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.tree import DecisionTreeClassifier
-
-# from data_old import load_data, preprocess
-from data import load_data, preprocess
 from sklearn import svm
 
-data = load_data()
-X, y = preprocess(data)
+import csv
+# from data_old import load_data, preprocess
+from data import load_data, preprocess
+
+train_data = load_data('input/train.csv')
+X, y = preprocess(train_data)
 
 
 
@@ -61,3 +62,35 @@ trerr = sum([ 1 if yp != yhp else 0 for yp, yhp in zip(y_train, y_hat) ]) / len(
 y_hat = model.predict(X_test)
 teerr = sum([ 1 if yp != yhp else 0 for yp, yhp in zip(y_test, y_hat) ]) / len(y_test)
 print('train:', trerr, 'test:', teerr)
+
+
+#submit/validation data
+test_data = load_data('input/test.csv')
+X_submit, _ = preprocess(test_data)
+
+
+norm = MinMaxScaler()
+norm.fit(X_submit)
+X_submit = norm.transform(X_submit)
+
+#Predicting results
+y_hat = model.predict(X_submit)
+
+#Arranging each result with the corresponding record in the submit dataset
+results = []
+i = 892
+for value in y_hat:
+    results.append((i, value))
+    i += 1
+
+# print(results)
+
+#Writing results in a file
+with open('./output/submit_results.csv', 'w', newline='\n') as file:
+    writer = csv.writer(file)
+
+    fields = ["PassengerId", "Survived"]
+    writer.writerow(fields)
+
+    for reg in results:
+        writer.writerow(reg)

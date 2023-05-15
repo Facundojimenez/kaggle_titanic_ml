@@ -7,7 +7,7 @@ This script is used for check if a feature is relevant
 to determinate if a passenger will survive or not
 """
 
-train = pd.read_csv('./train.csv')
+train = pd.read_csv('input/train.csv')
 
 # Shape and preview
 print('Train set shape:', train.shape)
