@@ -5,7 +5,7 @@ from sklearn.preprocessing import MinMaxScaler
 from sklearn.tree import DecisionTreeClassifier
 
 # from data_old import load_data, preprocess
-from data2 import load_data, preprocess
+from data import load_data, preprocess
 from sklearn import svm
 
 data = load_data()
@@ -34,13 +34,13 @@ for k in [ 1, 3, 5, 9, 10, 20, 30, 50, 100 ]:
 
 #Using Decission trees
 print("-----DECISSION TREES MODEL-----")
-model = DecisionTreeClassifier(random_state=0, max_depth=2)
+model = DecisionTreeClassifier(random_state=0, max_depth=5)
 model.fit(X_train, y_train)
 y_hat = model.predict(X_train)
 trerr = sum([ 1 if yp != yhp else 0 for yp, yhp in zip(y_train, y_hat) ]) / len(y_train)
 y_hat = model.predict(X_test)
 teerr = sum([ 1 if yp != yhp else 0 for yp, yhp in zip(y_test, y_hat) ]) / len(y_test)
-print(k, 'train:', trerr, 'test:', teerr)
+print('train:', trerr, 'test:', teerr)
 
 #Using SVM
 print("-----SVM MODEL-----")
@@ -50,9 +50,9 @@ y_hat = model.predict(X_train)
 trerr = sum([ 1 if yp != yhp else 0 for yp, yhp in zip(y_train, y_hat) ]) / len(y_train)
 y_hat = model.predict(X_test)
 teerr = sum([ 1 if yp != yhp else 0 for yp, yhp in zip(y_test, y_hat) ]) / len(y_test)
-print(k, 'train:', trerr, 'test:', teerr)
+print('train:', trerr, 'test:', teerr)
 
-#Using SVM
+#Using Random Forest
 print("-----Random Forest MODEL-----")
 model = RandomForestClassifier(max_depth=7, random_state=0)
 model.fit(X_train, y_train)
@@ -60,4 +60,4 @@ y_hat = model.predict(X_train)
 trerr = sum([ 1 if yp != yhp else 0 for yp, yhp in zip(y_train, y_hat) ]) / len(y_train)
 y_hat = model.predict(X_test)
 teerr = sum([ 1 if yp != yhp else 0 for yp, yhp in zip(y_test, y_hat) ]) / len(y_test)
-print(k, 'train:', trerr, 'test:', teerr)
+print('train:', trerr, 'test:', teerr)
