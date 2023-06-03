@@ -13,8 +13,7 @@ train = pd.read_csv('input/train.csv')
 print('Train set shape:', train.shape)
 train.head()
 
-print('TRAIN SET MISSING VALUES:')
-print(train.isna().sum())
+
 
 print("TRAIN SET DATA TYPES")
 print(train.dtypes)

@@ -10,28 +10,7 @@
             </Attribute>
           </value>
         </entry>
-        <entry key="\profiles1.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="\submit_results.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="\test.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="\train.csv">
+        <entry key="\input\train.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />

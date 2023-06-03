@@ -26,11 +26,10 @@ def preprocess(data):
 		y = data["Survived"]
 	#Deleting irrelevant features
 	X = data[["Pclass", "Sex", "Age", "Fare", "FamilyMembers", "Embarked_C", "Embarked_Q", "Embarked_S"]]
-	# X = data.drop(columns=["PassengerId", "Survived", "Name", "Ticket", "Cabin", "Parch", "SibSp"])
 
-	print(X.head()) #Prints the first top rows of the X dataframe
+	# print(X.head()) #Prints the first top rows of the X dataframe
 
 	return X.to_numpy(), y.to_numpy() #Converts from Pandas DataFrame type to Numpy Array for easier processing later
 
 X, y = preprocess(load_data('input/train.csv'))
-X, y = preprocess(load_data('input/test.csv'))
+# X, y = preprocess(load_data('input/test.csv'))
